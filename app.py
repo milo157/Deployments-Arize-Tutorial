@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/')
 def health_check():
     return 'Healthy!'
-    
+
 
 @app.route('/prediction', methods=['POST'])
 def churn_prediction():
@@ -68,8 +68,8 @@ def churn_prediction():
     pred = xgb_cl.predict(df)
 
     # Arize API
-    SPACE_KEY = "YOUR-SPACE-KEY"
-    API_KEY = "YOUR-API-KEY"
+    SPACE_KEY = "9575676"
+    API_KEY = "3275f7b7f0efbccebe2"
 
     arize_client = Client(space_key=SPACE_KEY, api_key=API_KEY)
 
@@ -83,7 +83,7 @@ def churn_prediction():
     else:
         print("✅ Arize setup complete!")
 
-    
+
     # Create record for logging to Arize
     single_pred = orig.copy()
     single_pred['Predicted_Churn'] = pred[0]
@@ -120,7 +120,7 @@ def churn_prediction():
     response_map = {0: 'No Churn', 1: 'Churn'}
     return Response(response_map[pred[0]], status=201, content_type='application/json')
 
-    
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port='8000')

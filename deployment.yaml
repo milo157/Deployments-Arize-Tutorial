@@ -8,10 +8,10 @@ command:
     pip install -r requirements.txt
     python app.py
 repositories:
-  dataset: your-dataset-id
+  dataset: dsh6ec65wbbg9kx
   mountPath: /opt/repos
   repositories:
-    - url: https://github.com/gradient-ai/Deployments-Arize-Tutorial
+    - url: https://github.com/milo157/Deployments-Arize-Tutorial
       name: repo
       ref: main
 resources:
